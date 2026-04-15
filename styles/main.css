@@ -180,9 +180,7 @@ select {
 .feature-card,
 .timeline-card,
 .contact-card,
-.highlight-banner,
-.swatch-card,
-.type-showcase {
+.highlight-banner {
   position: relative;
   z-index: 1;
 }
@@ -206,20 +204,26 @@ select {
 .hero-copy h1,
 .section-heading h2,
 .highlight-banner h2,
-.contact-card h2,
-.type-showcase h3 {
+.contact-card h2 {
   margin: 0;
   line-height: 1.04;
   letter-spacing: -0.04em;
+  word-break: keep-all;
+  overflow-wrap: normal;
 }
 
 .hero-copy h1 {
   font-size: clamp(2.9rem, 6vw, 5.8rem);
-  max-width: 12ch;
+  max-width: 16ch;
+  text-wrap: balance;
+}
+
+.headline-line {
+  display: block;
 }
 
 .headline-accent {
-  display: inline-block;
+  display: block;
   font-family: "Fraunces", "Pretendard Variable", serif;
   color: var(--brand-deep);
 }
@@ -231,7 +235,6 @@ select {
 .timeline-card p,
 .highlight-banner p,
 .contact-card p,
-.type-showcase p,
 .panel-card p {
   color: var(--muted);
   line-height: 1.7;
@@ -272,6 +275,13 @@ select {
   transform: translateY(-1px);
 }
 
+.button.is-disabled,
+.button[aria-disabled="true"] {
+  opacity: 0.45;
+  pointer-events: none;
+  box-shadow: none;
+}
+
 .button-primary {
   background: linear-gradient(135deg, var(--brand), #ff8d43);
   color: #fff;
@@ -295,9 +305,7 @@ select {
 .feature-card,
 .timeline-card,
 .contact-card,
-.highlight-banner,
-.swatch-card,
-.type-showcase {
+.highlight-banner {
   background: var(--surface);
   border: 1px solid var(--line);
   box-shadow: var(--shadow);
@@ -404,9 +412,7 @@ select {
 
 .feature-grid,
 .project-grid,
-.timeline,
-.swatch-grid,
-.harness-grid {
+.timeline {
   display: grid;
   gap: 18px;
 }
@@ -506,94 +512,6 @@ select {
   font-size: 0.94rem;
 }
 
-.harness-intro h1 {
-  margin: 10px 0 0;
-  font-size: clamp(2.4rem, 4vw, 4rem);
-  line-height: 1.06;
-  letter-spacing: -0.04em;
-}
-
-.swatch-grid {
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-}
-
-.swatch-card {
-  cursor: pointer;
-  text-align: left;
-  padding: 18px;
-}
-
-.swatch-card strong,
-.swatch-card span {
-  display: block;
-}
-
-.swatch-card span:last-child {
-  margin-top: 6px;
-  color: var(--muted);
-}
-
-.swatch-color {
-  display: block;
-  height: 88px;
-  border-radius: 20px;
-  margin-bottom: 16px;
-  border: 1px solid rgba(32, 23, 16, 0.08);
-}
-
-.swatch-color.brand {
-  background: #ff6f0f;
-}
-
-.swatch-color.bg {
-  background: #fff8f1;
-}
-
-.swatch-color.soft {
-  background: #ffd9bf;
-}
-
-.swatch-color.mint {
-  background: #dcefe4;
-}
-
-.swatch-color.text {
-  background: #201710;
-}
-
-.type-showcase {
-  padding: 30px;
-}
-
-.type-showcase h3 {
-  font-size: clamp(2rem, 3vw, 3rem);
-  max-width: 14ch;
-}
-
-.harness-grid {
-  grid-template-columns: 1fr 1fr 1.1fr;
-  align-items: start;
-}
-
-.copy-toast {
-  position: fixed;
-  left: 50%;
-  bottom: 24px;
-  transform: translate(-50%, 14px);
-  padding: 12px 18px;
-  border-radius: 999px;
-  background: rgba(32, 23, 16, 0.92);
-  color: #fff;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 180ms ease, transform 180ms ease;
-}
-
-.copy-toast.is-visible {
-  opacity: 1;
-  transform: translate(-50%, 0);
-}
-
 [data-reveal] {
   opacity: 0;
   transform: translateY(22px);
@@ -609,8 +527,7 @@ select {
   .hero-grid,
   .split-section,
   .highlight-banner,
-  .contact-card,
-  .harness-grid {
+  .contact-card {
     grid-template-columns: 1fr;
   }
 
@@ -619,7 +536,6 @@ select {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .swatch-grid,
   .project-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -663,8 +579,7 @@ select {
   .feature-grid,
   .project-grid,
   .timeline,
-  .stat-grid,
-  .swatch-grid {
+  .stat-grid {
     grid-template-columns: 1fr;
   }
 

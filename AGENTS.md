@@ -6,9 +6,9 @@
 - Treat this repository as a static site first: no mandatory build step, simple file structure, easy to publish.
 
 ## Working Order
-1. Update the visual and content system in `harness.html` first when making major UI changes.
-2. Apply proven tokens/components to `index.html`.
-3. Keep shared behavior in `styles/main.css` and `scripts/*.js`.
+1. Update the visual and content system directly in `index.html` when making major UI changes.
+2. Keep shared behavior in `styles/main.css` and `scripts/*.js`.
+3. Prefer small, reviewable iterations over parallel page variants.
 
 ## Design Direction
 - Reference mood: Danggeun Market's approachable orange energy, neighborhood warmth, and friendly utility.
@@ -29,13 +29,10 @@
 
 ## File Map
 - `index.html`: main public portfolio page.
-- `harness.html`: design and component harness for fast UI iteration.
 - `styles/main.css`: shared design tokens and component styles.
 - `scripts/site-content.js`: editable portfolio data.
 - `scripts/main.js`: shared page rendering and interactions.
-- `scripts/harness.js`: harness-only utilities.
 
 ## Definition of Done
 - Main page works when opened directly or from GitHub Pages.
-- Harness reflects the same visual tokens/components used in the main page.
 - No broken placeholder structure, empty sections, or inaccessible contrast issues.
