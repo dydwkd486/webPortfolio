@@ -6,6 +6,22 @@ const setText = (selector, value) => {
   });
 };
 
+const renderFacts = () => {
+  const root = document.querySelector("#hero-facts");
+  if (!root) return;
+
+  root.innerHTML = portfolioContent.facts
+    .map(
+      (fact) => `
+        <div class="fact-row">
+          <dt>${fact.label}</dt>
+          <dd>${fact.value}</dd>
+        </div>
+      `,
+    )
+    .join("");
+};
+
 const renderStats = () => {
   const root = document.querySelector("#stat-grid");
   if (!root) return;
@@ -38,10 +54,30 @@ const renderStrengths = () => {
   root.innerHTML = portfolioContent.strengths
     .map(
       (item) => `
-        <article class="feature-card" data-reveal>
-          <p class="panel-label">Strength</p>
+        <article class="highlight-card" data-reveal>
+          <p class="card-kicker">Highlight</p>
           <h3>${item.title}</h3>
           <p>${item.description}</p>
+        </article>
+      `,
+    )
+    .join("");
+};
+
+const renderSkills = () => {
+  const root = document.querySelector("#skill-grid");
+  if (!root) return;
+
+  root.innerHTML = portfolioContent.skills
+    .map(
+      (group) => `
+        <article class="skill-row" data-reveal>
+          <h3 class="skill-label">${group.title}</h3>
+          <div class="skill-tags">
+            ${group.items
+              .map((item, index) => `<span class="skill-tag skill-tag-${(index % 6) + 1}">${item}</span>`)
+              .join("")}
+          </div>
         </article>
       `,
     )
@@ -56,14 +92,52 @@ const renderProjects = () => {
     .map(
       (project) => `
         <article class="project-card" data-reveal>
-          <div class="project-topline">
-            <span class="project-badge">${project.badge}</span>
-            <span class="project-year">${project.year}</span>
+          <div>
+            <div class="project-header">
+              <span class="project-badge">${project.badge}</span>
+              <span class="project-meta">${project.period}</span>
+            </div>
+            <h3>${project.title}</h3>
+            <p>${project.description}</p>
+            <div class="pill-row">
+              ${project.pills.map((pill) => `<span class="pill">${pill}</span>`).join("")}
+            </div>
           </div>
-          <h3>${project.title}</h3>
-          <p>${project.description}</p>
-          <div class="pill-row">
-            ${project.pills.map((pill) => `<span class="pill">${pill}</span>`).join("")}
+          <div class="project-detail">
+            <div class="project-note">
+              <strong>${project.impactTitle}</strong>
+              <p>${project.impact}</p>
+            </div>
+          </div>
+        </article>
+      `,
+    )
+    .join("");
+};
+
+const renderCareer = () => {
+  const root = document.querySelector("#career-grid");
+  if (!root) return;
+
+  root.innerHTML = portfolioContent.career
+    .map(
+      (item) => `
+        <article class="career-card" data-reveal>
+          <div class="career-company">
+            <p class="career-period">${item.period}</p>
+            <h3>${item.company}</h3>
+            <p class="career-summary">${item.summary}</p>
+          </div>
+          <div class="career-role-list">
+            ${item.roles
+              .map(
+                (role) => `
+                  <div class="career-role">
+                    <strong>${role}</strong>
+                  </div>
+                `,
+              )
+              .join("")}
           </div>
         </article>
       `,
@@ -133,10 +207,9 @@ const bindReveal = () => {
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
-        }
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
       });
     },
     { threshold: 0.16 },
@@ -146,16 +219,13 @@ const bindReveal = () => {
 };
 
 const boot = () => {
-  const { profile } = portfolioContent;
-  const isHomePage = document.body.classList.contains("page-home");
+  const { meta, profile } = portfolioContent;
 
-  if (isHomePage && portfolioContent.meta) {
-    document.title = portfolioContent.meta.title;
+  document.title = meta.title;
 
-    const description = document.querySelector('meta[name="description"]');
-    if (description) {
-      description.setAttribute("content", portfolioContent.meta.description);
-    }
+  const description = document.querySelector('meta[name="description"]');
+  if (description) {
+    description.setAttribute("content", meta.description);
   }
 
   setText("[data-name]", profile.name);
@@ -165,10 +235,13 @@ const boot = () => {
   setText("[data-story]", profile.story);
   setText("[data-why-karrot]", profile.whyKarrot);
 
+  renderFacts();
   renderStats();
   renderPills();
   renderStrengths();
+  renderSkills();
   renderProjects();
+  renderCareer();
   renderTimeline();
   renderContacts();
   bindNav();

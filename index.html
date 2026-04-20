@@ -6,7 +6,7 @@
     <title>조용장 | Frontend Portfolio</title>
     <meta
       name="description"
-      content="조용장 프론트엔드 포트폴리오. 삼성SDS 결재 서비스와 웹메신저 구조 전환 경험을 담았습니다."
+      content="동네의 문제를 따뜻하고 실용적인 인터페이스로 풀어내는 프론트엔드 포트폴리오입니다."
     />
     <link rel="stylesheet" href="./styles/main.css" />
   </head>
@@ -14,123 +14,95 @@
     <div class="page-shell">
       <header class="site-header">
         <div class="container header-inner">
-          <a class="brand" href="#top">
-            <span class="brand-mark">C</span>
+          <a class="brand" href="#top" aria-label="맨 위로 이동">
+            <span class="brand-mark">J</span>
             <span class="brand-copy">
               <strong data-name>조용장</strong>
-              <span>Karrot-inspired Portfolio</span>
+              <span>Frontend Portfolio</span>
             </span>
           </a>
+
           <button class="nav-toggle" type="button" aria-expanded="false" aria-label="메뉴 열기">
             <span></span>
             <span></span>
             <span></span>
           </button>
+
           <nav class="site-nav">
-            <a href="#about">소개</a>
+            <a href="#top">소개</a>
+            <a href="#skills">기술</a>
             <a href="#projects">프로젝트</a>
-            <a href="#process">프로세스</a>
-            <a href="#contact">연락</a>
+            <a href="#career">커리어</a>
           </nav>
         </div>
       </header>
 
       <main id="top">
         <section class="hero-section">
-          <div class="container hero-grid">
-            <div class="hero-copy" data-reveal>
-              <p class="eyebrow">Warm, useful, neighborhood-minded frontend</p>
-              <h1>
-                <span class="headline-line">생활에 가까운 문제를</span>
-                <span class="headline-line headline-accent">다정하고 또렷한 화면으로</span>
-                <span class="headline-line">푸는 프론트엔드 포트폴리오</span>
-              </h1>
-              <p class="hero-description" data-tagline></p>
-              <div class="hero-actions">
-                <a class="button button-primary" href="#projects">프로젝트 보기</a>
-                <a class="button button-secondary" href="#contact">함께 이야기하기</a>
+          <div class="container hero-layout">
+            <div class="hero-primary">
+              <div class="hero-copy" data-reveal>
+                <p class="eyebrow">Danggeun-inspired, warm and practical</p>
+                <h1> 프론트엔드 개발자 포트폴리오</h1>
+                <p class="hero-description" data-tagline></p>
+                <div class="hero-actions">
+                  <a class="button button-primary" href="#projects">프로젝트 보기</a>
+                  <a class="button button-secondary" href="#contact">연락하기</a>
+                </div>
               </div>
             </div>
 
-            <aside class="hero-panel panel-card" data-reveal>
-              <div class="panel-label">Profile Snapshot</div>
-              <h2 data-role></h2>
-              <p data-summary></p>
-              <div class="stat-grid" id="stat-grid"></div>
-            </aside>
-          </div>
-          <div class="hero-blur hero-blur-a"></div>
-          <div class="hero-blur hero-blur-b"></div>
-        </section>
-
-        <section class="section" id="about">
-          <div class="container split-section">
-            <div class="section-heading" data-reveal>
-              <p class="eyebrow">About</p>
-              <h2>당근이 가진 생활 밀착형 감각을, 제품 경험으로 옮기는 사람</h2>
-            </div>
-            <div class="section-copy" data-reveal>
-              <p data-story></p>
-              <div class="pill-row" id="fit-pill-row"></div>
-            </div>
-          </div>
-        </section>
-
-        <section class="section soft-section">
-          <div class="container">
-            <div class="section-heading compact" data-reveal>
-              <p class="eyebrow">Strengths</p>
-              <h2>제가 잘하는 방식</h2>
-            </div>
-            <div class="feature-grid" id="strength-grid"></div>
-          </div>
-        </section>
-
-        <section class="section" id="projects">
-          <div class="container">
-            <div class="section-heading compact" data-reveal>
-              <p class="eyebrow">Selected Work</p>
-              <h2>문제 정의부터 디테일까지 이어지는 프로젝트</h2>
-            </div>
-            <div class="project-grid" id="project-grid"></div>
-          </div>
-        </section>
-
-        <section class="section accent-section" id="process">
-          <div class="container">
-            <div class="section-heading compact" data-reveal>
-              <p class="eyebrow">Process</p>
-              <h2>기획 감각과 구현 감각을 한 흐름으로 연결합니다</h2>
-            </div>
-            <div class="timeline" id="timeline"></div>
-          </div>
-        </section>
-
-        <section class="section">
-          <div class="container highlight-banner" data-reveal>
-            <div>
-              <p class="eyebrow">Why Karrot</p>
-              <h2>동네라는 작은 단위를 진지하게 다루는 서비스에 끌립니다</h2>
-            </div>
-            <p data-why-karrot></p>
-          </div>
-        </section>
-
-        <section class="section" id="contact">
-          <div class="container contact-card" data-reveal>
-            <div>
-              <p class="eyebrow">Contact</p>
-              <h2>같이 만들면 더 좋아질 화면이 있다면 편하게 연락 주세요</h2>
+            <div class="hero-secondary" data-reveal>
+              <aside class="hero-card">
+                <p class="card-kicker">Profile Snapshot</p>
+                <h2 data-role></h2>
+                <p class="hero-card-summary" data-summary></p>
+                <dl class="hero-facts" id="hero-facts"></dl>
+                <div class="stat-grid" id="stat-grid"></div>
+              </aside>
             </div>
             <div class="contact-links" id="contact-links"></div>
           </div>
+          <div class="hero-orb hero-orb-a"></div>
+          <div class="hero-orb hero-orb-b"></div>
+        </section>  
+
+
+        <section class="section" id="skills">
+          <div class="container stack-panel">
+            <div class="section-heading compact" data-reveal>
+              <p class="eyebrow">Skills</p>
+            </div>
+            <div class="stack-grid" id="skill-grid"></div>
+          </div>
         </section>
+
+        <section class="section section-accent" id="projects">
+          <div class="container">
+            <div class="section-heading compact" data-reveal>
+              <p class="eyebrow">Selected Projects</p>
+            </div>
+            <div class="project-list" id="project-grid"></div>
+          </div>
+        </section>
+
+        <section class="section" id="career">
+          <div class="container career-shell">
+            <div class="section-heading compact" data-reveal>
+              <p class="eyebrow">Career</p>
+            </div>
+            <div class="career-list" id="career-grid"></div>
+          </div>
+        </section>
+
+
+
       </main>
 
       <footer class="site-footer">
         <div class="container footer-inner">
           <p><span data-name>조용장</span> Portfolio</p>
-          <p>© <span id="current-year"></span> Built for GitHub Pages.</p>
+          <p><span id="current-year"></span> GitHub Pages-ready static site.</p>
         </div>
       </footer>
     </div>
