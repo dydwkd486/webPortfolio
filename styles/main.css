@@ -257,7 +257,6 @@ select {
 }
 
 .hero-description {
-  max-width: 58ch;
   margin: 24px auto 0;
   font-size: 1.08rem;
 }
@@ -393,7 +392,7 @@ select {
 
 .stat-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 10px;
   margin: 24px auto 0;
   max-width: 760px;
@@ -689,7 +688,7 @@ select {
 
 .career-card {
   display: grid;
-  grid-template-columns: minmax(180px, 0.42fr) minmax(0, 1fr);
+  grid-template-columns: minmax(180px, 0.5fr) minmax(0, 1fr);
   gap: 24px;
   padding: 28px;
 }
@@ -711,7 +710,7 @@ select {
 
 .career-role-list {
   display: grid;
-  align-content: start;
+  /* align-content: start; */
 }
 
 .career-role {
