@@ -6,6 +6,14 @@ const setText = (selector, value) => {
   });
 };
 
+const escapeHtml = (value = "") =>
+  String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+
 const renderFacts = () => {
   const root = document.querySelector("#hero-facts");
   if (!root) return;
@@ -90,7 +98,7 @@ const renderProjects = () => {
 
   root.innerHTML = portfolioContent.projects
     .map(
-      (project) => `
+      (project, index) => `
         <article class="project-card" data-reveal>
           <div>
             <div class="project-header">
@@ -108,11 +116,137 @@ const renderProjects = () => {
               <strong>${project.impactTitle}</strong>
               <p>${project.impact}</p>
             </div>
+            <button class="button button-secondary project-more-button" type="button" data-project-index="${index}">
+              더보기
+            </button>
           </div>
         </article>
       `,
     )
     .join("");
+};
+
+const getProjectModal = () => {
+  let modal = document.querySelector("#project-modal");
+  if (modal) return modal;
+
+  modal = document.createElement("div");
+  modal.className = "project-modal";
+  modal.id = "project-modal";
+  modal.setAttribute("aria-hidden", "true");
+  modal.innerHTML = `
+    <div class="project-modal-backdrop" data-modal-close></div>
+    <section
+      class="project-modal-panel"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="project-modal-title"
+      tabindex="-1"
+    >
+      <button class="project-modal-close" type="button" aria-label="상세 팝업 닫기" data-modal-close>
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <div class="project-modal-content"></div>
+    </section>
+  `;
+  document.body.append(modal);
+  return modal;
+};
+
+const renderProjectModalContent = (project) => {
+  const detail = project.detail || {};
+  const tasks = detail.tasks || [];
+  const image = detail.image || {};
+  const imageCaption = image.caption || "프로젝트 이미지를 넣을 수 있는 공간입니다.";
+  const mediaMarkup = image.src
+    ? `
+      <figure class="project-modal-media">
+        <img src="${escapeHtml(image.src)}" alt="${escapeHtml(image.alt || project.title)}" />
+        <figcaption>${escapeHtml(imageCaption)}</figcaption>
+      </figure>
+    `
+    : `
+      <figure class="project-modal-media project-modal-media-empty">
+        <div class="project-modal-image-placeholder" aria-hidden="true">
+          <span>이미지 영역</span>
+        </div>
+        <figcaption>${escapeHtml(imageCaption)}</figcaption>
+      </figure>
+    `;
+
+  return `
+    <div class="project-modal-head">
+      <span class="project-badge">${escapeHtml(project.badge)}</span>
+      <span class="project-meta">${escapeHtml(project.period)}</span>
+    </div>
+    <h2 id="project-modal-title">${escapeHtml(project.title)}</h2>
+    ${mediaMarkup}
+    <p class="project-modal-description">${escapeHtml(detail.overview || project.description)}</p>
+    <div class="project-modal-grid">
+      <div class="project-modal-section">
+        <strong>맡은 일</strong>
+        <ul>
+          ${tasks.map((task) => `<li>${escapeHtml(task)}</li>`).join("")}
+        </ul>
+      </div>
+      <div class="project-modal-section">
+        <strong>성과와 배운 점</strong>
+        <p>${escapeHtml(detail.result || project.impact)}</p>
+      </div>
+    </div>
+    <div class="pill-row">
+      ${project.pills.map((pill) => `<span class="pill">${escapeHtml(pill)}</span>`).join("")}
+    </div>
+  `;
+};
+
+const closeProjectModal = () => {
+  const modal = document.querySelector("#project-modal");
+  if (!modal) return;
+
+  modal.classList.remove("is-open");
+  modal.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("is-modal-open");
+};
+
+const openProjectModal = (project) => {
+  const modal = getProjectModal();
+  const content = modal.querySelector(".project-modal-content");
+  const panel = modal.querySelector(".project-modal-panel");
+  if (!content || !panel) return;
+
+  content.innerHTML = renderProjectModalContent(project);
+  modal.classList.add("is-open");
+  modal.setAttribute("aria-hidden", "false");
+  document.body.classList.add("is-modal-open");
+  panel.focus();
+};
+
+const bindProjectModal = () => {
+  const root = document.querySelector("#project-grid");
+  if (!root) return;
+
+  root.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-project-index]");
+    if (!button) return;
+
+    const project = portfolioContent.projects[Number(button.dataset.projectIndex)];
+    if (project) {
+      openProjectModal(project);
+    }
+  });
+
+  document.addEventListener("click", (event) => {
+    if (event.target.closest("[data-modal-close]")) {
+      closeProjectModal();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeProjectModal();
+    }
+  });
 };
 
 const renderCareer = () => {
@@ -241,6 +375,7 @@ const boot = () => {
   renderStrengths();
   renderSkills();
   renderProjects();
+  bindProjectModal();
   renderCareer();
   renderTimeline();
   renderContacts();

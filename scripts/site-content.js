@@ -1,6 +1,7 @@
 export const portfolioContent = {
   meta: {
     title: "조용장 | Frontend Portfolio",
+    description: "동네의 문제를 따뜻하고 실용적인 인터페이스로 풀어내는 프론트엔드 포트폴리오입니다.",
   },
   profile: {
     name: "조용장",
@@ -49,6 +50,22 @@ export const portfolioContent = {
       impact:
         "실제 결재 사용자라고 생각하며 구현하고 사용자 행동 순서를 다시 설계하고, 운영 중 발생하던 복잡도를 줄이는 방향으로 화면 구조와 유지보수 작업을 하였습니다.",
       pills: ["React", "JavaScript", "Redux", "React Query"],
+      detail: {
+        image: {
+          src: "",
+          alt: "사내 결재 서비스 화면 이미지",
+          caption: "결재 작성과 승인 흐름을 보여줄 이미지를 넣을 수 있는 공간입니다.",
+        },
+        overview:
+          "회사별 정책과 결재 흐름이 다른 상황에서도 사용자가 작성, 검토, 승인 과정을 자연스럽게 이어갈 수 있도록 주요 화면의 상태와 인터랙션을 정리했습니다.",
+        tasks: [
+          "결재 메인, 작성, 관리자, 승인 흐름의 화면 구현 및 운영",
+          "회사별 정책과 예외 케이스를 반영하기 쉬운 화면 구조 설계",
+          "운영 중 발견되는 사용성 이슈와 복잡한 상태 흐름 개선",
+        ],
+        result:
+          "반복적으로 바뀌는 요구사항을 더 안정적으로 반영할 수 있게 되었고, 사용자 행동 순서에 맞춘 화면 개선 경험을 쌓았습니다.",
+      },
     },
     { 
       badge: "Samsung SDS - Approval admin",
@@ -60,6 +77,22 @@ export const portfolioContent = {
       impact:
         "처음 설계부터 시작하여 React 개발 및 운영까지 진행하였고, 추가 개발에 맞춰서 기능을 추가하였습니다.  ",
       pills: ["React", "JavaScript", "Redux", "React Query"],
+      detail: {
+        image: {
+          src: "",
+          alt: "사내 결재 어드민 서비스 화면 이미지",
+          caption: "어드민 설정과 관리 화면을 보여줄 이미지를 넣을 수 있는 공간입니다.",
+        },
+        overview:
+          "기존 jQuery 기반 어드민을 React 기반 화면으로 전환하며, 운영자가 여러 설정과 관리 기능을 더 예측 가능하게 다룰 수 있도록 구현했습니다.",
+        tasks: [
+          "React 기반 어드민 화면 설계 및 개발",
+          "운영 중 추가되는 관리 기능과 정책 변경 대응",
+          "기존 화면의 흐름을 유지하면서 유지보수하기 쉬운 컴포넌트 구조 정리",
+        ],
+        result:
+          "새 기능을 추가하기 쉬운 기반을 만들고, 결재 서비스 운영에 필요한 관리 화면을 꾸준히 개선했습니다.",
+      },
     },
     {
       badge: "Samsung SDS - Web Messenger TF",
@@ -71,6 +104,22 @@ export const portfolioContent = {
       impact:
         "같은 제품이더라도 환경이 달라질 때 어떤 레이어를 공통화해야 하는지, 어떤 인터랙션은 새로 설계해야 하는지 더 깊게 고민하게 됐습니다.",
       pills: ["Electron", "Architecture", "Cross-platform", "UI Structure"],
+      detail: {
+        image: {
+          src: "",
+          alt: "웹 메신저 전환 프로젝트 이미지",
+          caption: "Electron과 웹 환경의 차이를 설명하는 이미지나 구조도를 넣을 수 있는 공간입니다.",
+        },
+        overview:
+          "Electron 환경에서 동작하던 메신저 기능을 웹 환경에서도 사용할 수 있도록 통신 방식과 환경별 분기 구조를 정리했습니다.",
+        tasks: [
+          "IPC 통신과 서버 통신 흐름의 웹 환경 대응",
+          "Electron 기능을 유지하면서 웹 메신저에서도 동작하는 분기 처리",
+          "환경 차이로 생기는 회귀를 줄이기 위한 테스트 코드 기반 점검",
+        ],
+        result:
+          "플랫폼이 달라져도 공통 기능을 유지하는 방법과, 환경별로 새로 설계해야 하는 경계를 더 명확히 이해하게 됐습니다.",
+      },
     },
     {
       badge: "Matrios - FullStack Development",
@@ -82,6 +131,22 @@ export const portfolioContent = {
       impact:
         "프론트엔드 구현을 중심으로 서비스 연결 구조를 이해하고, 기능이 실제 사용 흐름 안에서 자연스럽게 동작하도록 다듬었습니다.",
       pills: ["React", "AWS Amplify", "Lambda", "DynamoDB"],
+      detail: {
+        image: {
+          src: "",
+          alt: "교육형 서비스 화면 이미지",
+          caption: "교육형 서비스의 주요 화면이나 서비스 흐름 이미지를 넣을 수 있는 공간입니다.",
+        },
+        overview:
+          "교육형 서비스의 화면 구현과 클라우드 기반 연결 구조를 함께 경험하며, 사용자가 실제로 이용하는 흐름 안에서 기능이 완성되도록 개발했습니다.",
+        tasks: [
+          "React 기반 주요 화면 구현",
+          "AWS Amplify, Lambda, DynamoDB, API Gateway 연동 경험",
+          "기능 단위 화면과 데이터 흐름을 함께 확인하며 서비스 안정화 참여",
+        ],
+        result:
+          "프론트엔드 화면 구현을 넘어 제품이 실제 서비스로 동작하기 위해 필요한 연결 구조와 기본기를 익혔습니다.",
+      },
     },
   ],
   career: [
