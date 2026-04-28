@@ -51,11 +51,18 @@ export const portfolioContent = {
         "실제 결재 사용자라고 생각하며 구현하고 사용자 행동 순서를 다시 설계하고, 운영 중 발생하던 복잡도를 줄이는 방향으로 화면 구조와 유지보수 작업을 하였습니다.",
       pills: ["React", "JavaScript", "Redux", "React Query"],
       detail: {
-        image: {
-          src: "",
-          alt: "사내 결재 서비스 화면 이미지",
-          caption: "결재 작성과 승인 흐름을 보여줄 이미지를 넣을 수 있는 공간입니다.",
-        },
+        images: [
+          {
+            src: "./res/결재사진1.png",
+            alt: "사내 결재 서비스 주요 화면 첫 번째 이미지",
+            caption: "결재 서비스 주요 화면 1",
+          },
+          {
+            src: "./res/결재사진2.png",
+            alt: "사내 결재 서비스 주요 화면 두 번째 이미지",
+            caption: "결재 서비스 주요 화면 2",
+          },
+        ],
         overview:
           "회사별 정책과 결재 흐름이 다른 상황에서도 사용자가 작성, 검토, 승인 과정을 자연스럽게 이어갈 수 있도록 주요 화면의 상태와 인터랙션을 정리했습니다.",
         tasks: [
@@ -78,11 +85,13 @@ export const portfolioContent = {
         "처음 설계부터 시작하여 React 개발 및 운영까지 진행하였고, 추가 개발에 맞춰서 기능을 추가하였습니다.  ",
       pills: ["React", "JavaScript", "Redux", "React Query"],
       detail: {
-        image: {
-          src: "",
-          alt: "사내 결재 어드민 서비스 화면 이미지",
-          caption: "어드민 설정과 관리 화면을 보여줄 이미지를 넣을 수 있는 공간입니다.",
-        },
+        images: [
+          {
+            src: "./res/결재어드민사진.png",
+            alt: "사내 결재 어드민 서비스 주요 화면 이미지",
+            caption: "결재 어드민 주요 화면",
+          },
+        ],
         overview:
           "기존 jQuery 기반 어드민을 React 기반 화면으로 전환하며, 운영자가 여러 설정과 관리 기능을 더 예측 가능하게 다룰 수 있도록 구현했습니다.",
         tasks: [
@@ -105,11 +114,8 @@ export const portfolioContent = {
         "같은 제품이더라도 환경이 달라질 때 어떤 레이어를 공통화해야 하는지, 어떤 인터랙션은 새로 설계해야 하는지 더 깊게 고민하게 됐습니다.",
       pills: ["Electron", "Architecture", "Cross-platform", "UI Structure"],
       detail: {
-        image: {
-          src: "",
-          alt: "웹 메신저 전환 프로젝트 이미지",
-          caption: "Electron과 웹 환경의 차이를 설명하는 이미지나 구조도를 넣을 수 있는 공간입니다.",
-        },
+        placeholderLabel: "구현중",
+        placeholderCaption: "관련 이미지는 현재 구현중입니다.",
         overview:
           "Electron 환경에서 동작하던 메신저 기능을 웹 환경에서도 사용할 수 있도록 통신 방식과 환경별 분기 구조를 정리했습니다.",
         tasks: [
@@ -132,11 +138,13 @@ export const portfolioContent = {
         "프론트엔드 구현을 중심으로 서비스 연결 구조를 이해하고, 기능이 실제 사용 흐름 안에서 자연스럽게 동작하도록 다듬었습니다.",
       pills: ["React", "AWS Amplify", "Lambda", "DynamoDB"],
       detail: {
-        image: {
-          src: "",
-          alt: "교육형 서비스 화면 이미지",
-          caption: "교육형 서비스의 주요 화면이나 서비스 흐름 이미지를 넣을 수 있는 공간입니다.",
-        },
+        images: [
+          {
+            src: "./res/Matrios사진.png",
+            alt: "교육형 서비스 주요 화면 이미지",
+            caption: "Matrios 주요 화면",
+          },
+        ],
         overview:
           "교육형 서비스의 화면 구현과 클라우드 기반 연결 구조를 함께 경험하며, 사용자가 실제로 이용하는 흐름 안에서 기능이 완성되도록 개발했습니다.",
         tasks: [

@@ -156,21 +156,32 @@ const getProjectModal = () => {
 const renderProjectModalContent = (project) => {
   const detail = project.detail || {};
   const tasks = detail.tasks || [];
-  const image = detail.image || {};
-  const imageCaption = image.caption || "프로젝트 이미지를 넣을 수 있는 공간입니다.";
-  const mediaMarkup = image.src
+  const images =
+    detail.images?.filter((item) => item?.src) ||
+    (detail.image?.src ? [detail.image] : []);
+  const placeholderLabel = detail.placeholderLabel || "이미지 영역";
+  const placeholderCaption = detail.placeholderCaption || "프로젝트 이미지를 넣을 수 있는 공간입니다.";
+  const mediaMarkup = images.length
     ? `
-      <figure class="project-modal-media">
-        <img src="${escapeHtml(image.src)}" alt="${escapeHtml(image.alt || project.title)}" />
-        <figcaption>${escapeHtml(imageCaption)}</figcaption>
-      </figure>
+      <div class="project-modal-media-grid ${images.length === 1 ? "is-single" : ""}">
+        ${images
+          .map(
+            (image) => `
+              <figure class="project-modal-media">
+                <img src="${escapeHtml(image.src)}" alt="${escapeHtml(image.alt || project.title)}" />
+                ${image.caption ? `<figcaption>${escapeHtml(image.caption)}</figcaption>` : ""}
+              </figure>
+            `,
+          )
+          .join("")}
+      </div>
     `
     : `
       <figure class="project-modal-media project-modal-media-empty">
         <div class="project-modal-image-placeholder" aria-hidden="true">
-          <span>이미지 영역</span>
+          <span>${escapeHtml(placeholderLabel)}</span>
         </div>
-        <figcaption>${escapeHtml(imageCaption)}</figcaption>
+        <figcaption>${escapeHtml(placeholderCaption)}</figcaption>
       </figure>
     `;
 
